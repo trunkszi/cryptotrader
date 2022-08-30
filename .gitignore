@@ -1,0 +1,12 @@
+# Xmake cache
+.xmake/
+build/
+cmake-build-debug/
+
+
+.DS_Store
+.idea
+
+
+# project logs
+logs
