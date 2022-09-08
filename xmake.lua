@@ -45,6 +45,6 @@ add_requires("boost", { configs = {
 
 target("cryptotrader")
     set_kind("binary")
-    add_includedirs("third_party/Boost.Application/include", "src")
+    add_includedirs("vendor/Boost.Application/include", "src")
     add_files("src/*.cpp")
     add_packages("coost", "boost")
