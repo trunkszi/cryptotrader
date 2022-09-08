@@ -31,7 +31,7 @@ elseif is_host("linux") then
     end
 end
 
-add_requires("cocoyaxi", { configs = {
+add_requires("coost", { configs = {
     openssl = true,
     libcurl = true,
 } })
@@ -45,6 +45,6 @@ add_requires("boost", { configs = {
 
 target("cryptotrader")
     set_kind("binary")
-    add_includedirs("third_party/Boost.Application/include", "include")
+    add_includedirs("third_party/Boost.Application/include", "src")
     add_files("src/*.cpp")
-    add_packages("cocoyaxi", "boost")
+    add_packages("coost", "boost")

@@ -7,7 +7,7 @@
 
 // application
 #include "boost/application/config.hpp"
-#include <boost/application/base_type.hpp>
+#include "boost/application/base_type.hpp"
 #include <boost/core/noncopyable.hpp>
 #include <boost/filesystem.hpp>
 #include <string>

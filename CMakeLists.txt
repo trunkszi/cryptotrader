@@ -8,7 +8,7 @@ cmake_policy(SET CMP0091 NEW)
 project(cryptotrader LANGUAGES CXX C)
 
 # target
-add_executable(cryptotrader "")
+add_executable(cryptotrader "" src/exchanges/binance/types.h src/exchanges/binance/constant.h)
 set_target_properties(cryptotrader PROPERTIES OUTPUT_NAME "cryptotrader")
 set_target_properties(cryptotrader PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build/windows/x64/debug")
 target_include_directories(cryptotrader PRIVATE
@@ -16,10 +16,10 @@ target_include_directories(cryptotrader PRIVATE
     include
 )
 target_include_directories(cryptotrader PRIVATE
-    C:/Users/Administrator/AppData/Local/.xmake/packages/c/cocoyaxi/v2.0.3/267034edeb0240b9af0859424507a732/include
-    C:/Users/Administrator/AppData/Local/.xmake/packages/l/libcurl/7.84.0/4237f59d161c496ab4e238000e391607/include
-    C:/Users/Administrator/AppData/Local/.xmake/packages/o/openssl/1.1.1q/122bf2e537f34e8a954b5296408a9aee/include
-    C:/Users/Administrator/AppData/Local/.xmake/packages/b/boost/1.80.0/464613f687a54b47a94947a31e36f412/include
+    C:/Users/shiqj/AppData/Local/.xmake/packages/c/coost/v3.0.0/cd01bd858a0e452b916bd56c8f0d16fd/include
+    C:/Users/shiqj/AppData/Local/.xmake/packages/l/libcurl/7.84.0/4237f59d161c496ab4e238000e391607/include
+    C:/Users/shiqj/AppData/Local/.xmake/packages/o/openssl/1.1.1q/122bf2e537f34e8a954b5296408a9aee/include
+    C:/Users/shiqj/AppData/Local/.xmake/packages/b/boost/1.80.0/464613f687a54b47a94947a31e36f412/include
 )
 target_compile_definitions(cryptotrader PRIVATE
     _WIN32_WINNT=0x0A00
@@ -61,6 +61,8 @@ target_link_libraries(cryptotrader PRIVATE
     libboost_atomic-mt-s
     libboost_chrono-mt-s
     libboost_filesystem-mt-s
+    shell32
+    ole32
     advapi32
     crypt32
     wldap32
@@ -69,10 +71,13 @@ target_link_libraries(cryptotrader PRIVATE
     user32
 )
 target_link_directories(cryptotrader PRIVATE
-    C:/Users/Administrator/AppData/Local/.xmake/packages/c/cocoyaxi/v2.0.3/267034edeb0240b9af0859424507a732/lib
-    C:/Users/Administrator/AppData/Local/.xmake/packages/l/libcurl/7.84.0/4237f59d161c496ab4e238000e391607/lib
-    C:/Users/Administrator/AppData/Local/.xmake/packages/o/openssl/1.1.1q/122bf2e537f34e8a954b5296408a9aee/lib
-    C:/Users/Administrator/AppData/Local/.xmake/packages/b/boost/1.80.0/464613f687a54b47a94947a31e36f412/lib
+    C:/Users/shiqj/AppData/Local/.xmake/packages/c/coost/v3.0.0/cd01bd858a0e452b916bd56c8f0d16fd/lib
+    C:/Users/shiqj/AppData/Local/.xmake/packages/l/libcurl/7.84.0/4237f59d161c496ab4e238000e391607/lib
+    C:/Users/shiqj/AppData/Local/.xmake/packages/o/openssl/1.1.1q/122bf2e537f34e8a954b5296408a9aee/lib
+    C:/Users/shiqj/AppData/Local/.xmake/packages/b/boost/1.80.0/464613f687a54b47a94947a31e36f412/lib
+)
+target_link_options(cryptotrader PRIVATE
+    /FORCE:MULTIPLE
 )
 target_sources(cryptotrader PRIVATE
     src/main.cpp

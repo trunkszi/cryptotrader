@@ -115,7 +115,7 @@ bool setup(application::global_context_ptr &context, boost::system::error_code &
 
 int main(int argc, char *argv[]) {
     flag::init(argc, argv);
-    log::init();
+    // log::init();
     application::global_context_ptr app_context = application::global_context::create();
     Application app(app_context);
 
