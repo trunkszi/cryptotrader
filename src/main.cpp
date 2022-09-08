@@ -76,12 +76,6 @@ bool setup(application::global_context_ptr &context, boost::system::error_code &
     using namespace boost::application::scm;
     using namespace boost::application;
 
-//    value_type service_user = value_type(""),
-//    value_type service_password = value_type(""),
-//    value_type service_start_mode = value_type("auto"),
-//    value_type service_depends = value_type(""),
-//    value_type service_option_string = value_type(""))
-
     if (FLG_install) {
         InstallService<std::string>(
                 std::move(std::string(FLG_name.c_str())),
@@ -110,7 +104,6 @@ bool setup(application::global_context_ptr &context, boost::system::error_code &
     }
     return true;
 }
-
 #endif
 
 int main(int argc, char *argv[]) {

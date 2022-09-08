@@ -8,12 +8,12 @@ cmake_policy(SET CMP0091 NEW)
 project(cryptotrader LANGUAGES CXX C)
 
 # target
-add_executable(cryptotrader "" src/exchanges/binance/types.h src/exchanges/binance/constant.h)
+add_executable(cryptotrader "")
 set_target_properties(cryptotrader PROPERTIES OUTPUT_NAME "cryptotrader")
 set_target_properties(cryptotrader PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build/windows/x64/debug")
 target_include_directories(cryptotrader PRIVATE
-    third_party/Boost.Application/include
-    include
+    vendor/Boost.Application/include
+    src
 )
 target_include_directories(cryptotrader PRIVATE
     C:/Users/shiqj/AppData/Local/.xmake/packages/c/coost/v3.0.0/cd01bd858a0e452b916bd56c8f0d16fd/include
@@ -81,5 +81,57 @@ target_link_options(cryptotrader PRIVATE
 )
 target_sources(cryptotrader PRIVATE
     src/main.cpp
+)
+
+# target
+add_library(unitest STATIC "")
+set_target_properties(unitest PROPERTIES OUTPUT_NAME "unitest")
+set_target_properties(unitest PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build/windows/x64/debug")
+target_include_directories(unitest PRIVATE
+    C:/Users/shiqj/AppData/Local/.xmake/packages/g/gtest/1.12.1/0c102abdf5a64750b3685515d0d66539/include
+)
+target_compile_definitions(unitest PRIVATE
+    _WIN32_WINNT=0x0A00
+    _WIN32
+    BOOST_APPLICATION_FEATURE_NS_SELECT_BOOST
+    BOOST_BIND_GLOBAL_PLACEHOLDERS
+)
+if(MSVC)
+    target_compile_options(unitest PRIVATE -W3)
+else()
+    target_compile_options(unitest PRIVATE -Wall)
+endif()
+set_target_properties(unitest PROPERTIES CXX_EXTENSIONS OFF)
+target_compile_features(unitest PRIVATE cxx_std_20)
+if(MSVC)
+    target_compile_options(unitest PRIVATE $<$<CONFIG:Debug>:-Od>)
+else()
+    target_compile_options(unitest PRIVATE -O0)
+endif()
+if(MSVC)
+    target_compile_options(unitest PRIVATE -Zi)
+else()
+    target_compile_options(unitest PRIVATE -g)
+endif()
+if(MSVC)
+    set_property(TARGET unitest PROPERTY
+        MSVC_RUNTIME_LIBRARY "MultiThreaded")
+endif()
+target_link_libraries(unitest PRIVATE
+    gmock
+    gtest
+    gtest_main
+    shell32
+    ole32
+)
+target_link_directories(unitest PRIVATE
+    C:/Users/shiqj/AppData/Local/.xmake/packages/g/gtest/1.12.1/0c102abdf5a64750b3685515d0d66539/lib
+)
+target_link_options(unitest PRIVATE
+    /FORCE:MULTIPLE
+)
+target_sources(unitest PRIVATE
+    unitest/main.cpp
+    unitest/tests.cpp
 )
 

@@ -48,3 +48,6 @@ target("cryptotrader")
     add_includedirs("vendor/Boost.Application/include", "src")
     add_files("src/*.cpp")
     add_packages("coost", "boost")
+target_end()
+
+includes("unitest")

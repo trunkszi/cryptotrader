@@ -1,9 +1,10 @@
 //
-// Created by shiqj on 2022/9/8.
+// Created by Quincy on 2022/9/8.
 //
 
 #ifndef CRYPTOTRADER_CONSTANT_H
 #define CRYPTOTRADER_CONSTANT_H
+
 namespace binance {
     /// 现货基础信息查询url,备用url: https://api1.binance.com, https://api2.binance.com, https://api3.binance.com
     constexpr const char * base_url = "https://api.binance.com";
@@ -18,7 +19,8 @@ namespace binance {
     constexpr const char * euro_base_url = "https://eapi.binance.com";
 
 
-
+    /// websocket基础信息查询url
+    constexpr const char * ws_base_url = "wss://stream.binance.com:9443";
 
 }
 
